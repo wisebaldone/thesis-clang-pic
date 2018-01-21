@@ -81,6 +81,7 @@ add_clang_library(clangBasic
   Targets/NVPTX.cpp
   Targets/Nios2.cpp
   Targets/OSTargets.cpp
+  Targets/PIC.cpp
   Targets/PNaCl.cpp
   Targets/PPC.cpp
   Targets/SPIR.cpp

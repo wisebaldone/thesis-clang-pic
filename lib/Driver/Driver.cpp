@@ -35,6 +35,7 @@
 #include "ToolChains/NaCl.h"
 #include "ToolChains/NetBSD.h"
 #include "ToolChains/OpenBSD.h"
+#include "ToolChains/PIC.h"
 #include "ToolChains/PS4CPU.h"
 #include "ToolChains/Solaris.h"
 #include "ToolChains/TCE.h"
@@ -4180,6 +4181,12 @@ const ToolChain &Driver::getToolChain(const ArgList &Args,
         break;
       case llvm::Triple::avr:
         TC = llvm::make_unique<toolchains::AVRToolChain>(*this, Target, Args);
+        break;
+      case llvm::Triple::pic_b:
+      case llvm::Triple::pic_mr:
+      case llvm::Triple::pic_emr:
+      case llvm::Triple::pic_a:
+        TC = llvm::make_unique<toolchains::PICToolChain>(*this, Target, Args);
         break;
       default:
         if (Target.getVendor() == llvm::Triple::Myriad)

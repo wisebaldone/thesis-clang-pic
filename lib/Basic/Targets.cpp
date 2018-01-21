@@ -27,6 +27,7 @@
 #include "Targets/NVPTX.h"
 #include "Targets/Nios2.h"
 #include "Targets/OSTargets.h"
+#include "Targets/PIC.h"
 #include "Targets/PNaCl.h"
 #include "Targets/PPC.h"
 #include "Targets/SPIR.h"
@@ -316,7 +317,14 @@ TargetInfo *AllocateTarget(const llvm::Triple &Triple,
 
   case llvm::Triple::le64:
     return new Le64TargetInfo(Triple, Opts);
-
+  case llvm::Triple::pic_b:
+    return new PICTargetInfo(Triple, Opts);
+  case llvm::Triple::pic_mr:
+    return new PICTargetInfo(Triple, Opts);
+  case llvm::Triple::pic_emr:
+    return new PICTargetInfo(Triple, Opts);
+  case llvm::Triple::pic_a:
+    return new PICTargetInfo(Triple, Opts);
   case llvm::Triple::ppc:
     if (Triple.isOSDarwin())
       return new DarwinPPC32TargetInfo(Triple, Opts);
