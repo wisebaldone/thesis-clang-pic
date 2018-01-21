@@ -55,7 +55,8 @@ public:
     WIntType = SignedInt;
     Char32Type = UnsignedLong;
     SigAtomicType = SignedChar;
-    resetDataLayout("e-p:16:8-i8:8-i16:8-i32:8-i64:8-f32:8-f64:8-n8-a:8");
+    resetDataLayout("e");
+    // todo: All of this needs to be changed, but we compile now.
   }
 
   void getTargetDefines(const LangOptions &Opts,
